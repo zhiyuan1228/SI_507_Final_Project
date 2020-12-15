@@ -345,7 +345,7 @@ def promt_first():
     while True:
         print('-'*30)
         print('The following options are available:')
-        print('1: Search for a movie by title\n2: View my watch list\n3: Exit')
+        print('1: Search for a movie by title\n2: View my watchlist\n3: Exit')
         first_input = input('Please enter a number to select an option: ')
         if first_input == '1' or first_input == '2' or first_input == '3':
             break
@@ -440,35 +440,38 @@ def main():
                     break
                 selected_movie = movie_list[number - 1]
                 selected_movie.detailed_info()
-                next_input = prompt_next(selected_movie)
-                if next_input == '1':
-                    cast_list = get_cast(selected_movie.imdbID)
-                    print(f'-----------Cast List for "{selected_movie.title}"-----------')
-                    print_numbered_list(cast_list)
-                    while True:
-                        print('-'*30)
-                        print('Which actor would you like to know more about his/her famous works? ')
-                        number = prompt_number(len(cast_list))
-                        if number == 'back':
-                            break
-                        selected_actor = cast_list[number - 1]
-                        get_actor_details(selected_actor)
-                elif next_input == '2':
-                    print('*'*30)
-                    print(f'Launching {selected_movie.poster_url} in web browser...')
-                    webbrowser.open(selected_movie.poster_url)
-                    print('*'*30)
-                elif next_input == '3':
-                    # watch_list.append(selected_movie)
-                    insert_watchlist(selected_movie)
-                    print('*'*30)
-                    print(f'"{selected_movie.title}" has successfully been added to your watchlist! ')
-                    print('*'*30)
-                elif next_input == '4':
-                    continue
-                elif next_input == '5':
+                next_input = None
+                while True: 
+                    next_input = prompt_next(selected_movie)
+                    if next_input == '1':
+                        cast_list = get_cast(selected_movie.imdbID)
+                        print(f'-----------Cast List for "{selected_movie.title}"-----------')
+                        print_numbered_list(cast_list)
+                        while True:
+                            print('-'*30)
+                            print('Which actor would you like to know more about his/her famous works? ')
+                            number = prompt_number(len(cast_list))
+                            if number == 'back':
+                                break
+                            selected_actor = cast_list[number - 1]
+                            get_actor_details(selected_actor)
+                    elif next_input == '2':
+                        print('*'*30)
+                        print(f'Launching {selected_movie.poster_url} in web browser...')
+                        webbrowser.open(selected_movie.poster_url)
+                        print('*'*30)
+                    elif next_input == '3':
+                        # watch_list.append(selected_movie)
+                        insert_watchlist(selected_movie)
+                        print('*'*30)
+                        print(f'"{selected_movie.title}" has successfully been added to your watchlist! ')
+                        print('*'*30)
+                    elif next_input == '4':
+                        break
+                    elif next_input == '5':
+                        break
+                if next_input == '5':
                     break
 
 if __name__ == "__main__":
 	main()
-
