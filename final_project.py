@@ -394,6 +394,9 @@ def print_watch_list():
         LIMIT 10
         '''
     raw_query_result = connection_helper(query)
+    if not raw_query_result:
+        print('Your watchlist is empty! ')
+        return
     if number == '4':
         title_list = []
         rating_list = []
