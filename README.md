@@ -13,5 +13,11 @@ Perform a search:
 
 View the watchlist:    
   - Choose a display option: sort by rating/year/time added, barplot
+
 ## Required Python Packages
 BeautifulSoup, requests, sqlite3, webbrowser, tabulate, plotly
+
+## Demo Video
+https://www.bilibili.com/video/BV1nX4y1u7qB/
+
+If the link above does not work, please try the following link. https://youtu.be/VPCx40zXPnk
